@@ -16,7 +16,7 @@ const DatosPersonales = ({ updateStep }) => {
   }
 
   const handleBlurName = () => {
-    { (name.value !== '' && name.valid) ? setCheckName(false) : setCheckName(true) }
+    (name.value !== '' && name.valid) ? setCheckName(false) : setCheckName(true) 
   }
 
   return (

@@ -15,7 +15,7 @@ const DatosUsuario = ({ updateStep }) => {
   }
 
   const handleBlurEmail = () => {
-    { (email.value !== '' && email.valid) ? setCheckEmail(false) : setCheckEmail(true) }
+    (email.value !== '' && email.valid) ? setCheckEmail(false) : setCheckEmail(true) 
   }
 
   const handlePassChange = (input) => {
@@ -25,7 +25,7 @@ const DatosUsuario = ({ updateStep }) => {
   }
 
   const handleBlurPassword = () => {
-    { (password.value !== '' && password.valid) ? setCheckPass(false) : setCheckPass(true) }
+    (password.value !== '' && password.valid) ? setCheckPass(false) : setCheckPass(true)
   }
 
   return (
