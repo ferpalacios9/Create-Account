@@ -6,6 +6,7 @@ const DatosUsuario = ({ updateStep }) => {
   const [email, setEmail] = useState({ value: "", valid: null });
   const [password, setPassword] = useState({ value: "", valid: null });
   const [checkEmail, setCheckEmail] = useState(false)
+  const [checkPass, setCheckPass] = useState(false)
 
   const handleEmailChange = (input) => {
     const newEmail = input.target.value;
@@ -13,8 +14,18 @@ const DatosUsuario = ({ updateStep }) => {
     setEmail({ value: newEmail, valid: validate });
   }
 
-  const handleBlur = () => {
+  const handleBlurEmail = () => {
     { (email.value !== '' && email.valid) ? setCheckEmail(false) : setCheckEmail(true) }
+  }
+
+  const handlePassChange = (input) => {
+    const newPass = input.target.value;
+    const validate = validarPassword(newPass);
+    setPassword({ value: newPass, valid: validate });
+  }
+
+  const handleBlurPassword = () => {
+    { (password.value !== '' && password.valid) ? setCheckPass(false) : setCheckPass(true) }
   }
 
   return (
@@ -48,7 +59,7 @@ const DatosUsuario = ({ updateStep }) => {
         helperText={checkEmail && "Ingresa un correo electrónico válido."}
         value={email.value}
         onChange={handleEmailChange}
-        onBlur={handleBlur}
+        onBlur={handleBlurEmail}
       />
       <TextField
         label="Contraseña"
@@ -56,16 +67,14 @@ const DatosUsuario = ({ updateStep }) => {
         fullWidth
         margin="dense"
         type="password"
-        error={password.valid === false}
+        error={checkPass}
         helperText={
-          password.valid === false &&
+          checkPass &&
           "Ingresa una contraseña válida, Al menos 8 caracteres y máximo 20."
         }
         value={password.value}
-        onChange={(input) => {
-          const password = input.target.value;
-          setPassword({ value: password, valid: validarPassword(password) });
-        }}
+        onChange={handlePassChange}
+        onBlur={handleBlurPassword}
       />
       <Button variant="contained" type="submit">
         Siguiente
