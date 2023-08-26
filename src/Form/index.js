@@ -36,7 +36,7 @@ const Form = () => {
         <Typography variant="h3">AluraFood</Typography>
       </LogoSpace>
       <FormSpace>
-        {step < 3 && <Stepper step={step} />}
+        {step < 3 && <Stepper step={step} sx={{marginBottom: 15}} />}
         {steps[step]}
       </FormSpace>
     </Box>

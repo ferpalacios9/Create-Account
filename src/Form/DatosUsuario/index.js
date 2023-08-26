@@ -76,7 +76,7 @@ const DatosUsuario = ({ updateStep }) => {
         onChange={handlePassChange}
         onBlur={handleBlurPassword}
       />
-      <Button variant="contained" type="submit">
+      <Button variant="contained" type="submit" sx={{ marginTop: 2 }}>
         Siguiente
       </Button>
     </Box>

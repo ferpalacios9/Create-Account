@@ -45,7 +45,7 @@ const DatosPersonales = ({ updateStep }) => {
         value={name.value}
         onChange={handleNameChange}
         onBlur={handleBlurName}
-        
+
       />
       <TextField
         label="Apellidos"
@@ -76,7 +76,7 @@ const DatosPersonales = ({ updateStep }) => {
           console.log(value, valid)
         }}
       />
-      <Button variant="contained" type="submit">
+      <Button variant="contained" type="submit" sx={{ marginTop: 2 }}>
         Siguiente
       </Button>
     </Box>

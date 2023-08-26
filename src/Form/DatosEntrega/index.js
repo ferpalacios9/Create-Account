@@ -34,7 +34,7 @@ const DatosEntrega = () => {
         margin="dense"
         type="text"
       />
-      <Button variant="contained" type="submit">
+      <Button variant="contained" type="submit" sx={{ marginTop: 2 }}>
         Crear cuenta
       </Button>
     </Box>
