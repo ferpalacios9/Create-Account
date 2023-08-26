@@ -1,12 +1,23 @@
 import React, { useState } from "react";
 import { TextField, Button, Box } from "@mui/material";
-import { validarNombre, validarApellidos, validarTelefono } from "./validaciones";
+import { validarName, validarLastName, validarPhone } from "./validaciones";
 
 const DatosPersonales = ({ updateStep }) => {
 
   const [name, setName] = useState({ value: '', valid: null })
   const [lastName, setLastName] = useState({ value: '', valid: null })
   const [phone, setPhone] = useState({ value: '', valid: null })
+  const [checkName, setCheckName] = useState(false)
+
+  const handleNameChange = (input) => {
+    const newName = input.target.value;
+    const validate = validarName(newName);
+    setName({ value: newName, valid: validate });
+  }
+
+  const handleBlurName = () => {
+    { (name.value !== '' && name.valid) ? setCheckName(false) : setCheckName(true) }
+  }
 
   return (
     <Box
@@ -29,13 +40,11 @@ const DatosPersonales = ({ updateStep }) => {
         fullWidth
         margin="dense"
         type="text"
+        error={checkName}
+        helperText={checkName && "Ingresa un nombre válido."}
         value={name.value}
-        onChange={(input) => {
-          const value = input.target.value;
-          const valid = validarNombre(value);
-          setName({ value, valid });
-          console.log(value, valid)
-        }}
+        onChange={handleNameChange}
+        onBlur={handleBlurName}
         
       />
       <TextField
@@ -47,7 +56,7 @@ const DatosPersonales = ({ updateStep }) => {
         value={lastName.value}
         onChange={(input) => {
           const value = input.target.value;
-          const valid = validarApellidos(value);
+          const valid = validarLastName(value);
           setLastName({ value, valid });
           console.log(value, valid)
         }}
@@ -62,7 +71,7 @@ const DatosPersonales = ({ updateStep }) => {
         value={phone.value}
         onChange={(input) => {
           const value = input.target.value;
-          const valid = validarTelefono(value);
+          const valid = validarPhone(value);
           setPhone({ value, valid });
           console.log(value, valid)
         }}
