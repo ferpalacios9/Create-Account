@@ -1,7 +1,6 @@
-import React, { useState, useContext } from "react";
+import React, { useState } from "react";
 import { TextField, Button, Box } from "@mui/material";
 import { validarEmail, validarPassword } from "./validaciones";
-import { CounterContext } from "../../Context";
 
 const DatosUsuario = ({ updateStep }) => {
   const [email, setEmail] = useState({ value: "", valid: null });
@@ -29,10 +28,6 @@ const DatosUsuario = ({ updateStep }) => {
     (password.value !== '' && password.valid) ? setCheckPass(false) : setCheckPass(true)
   }
 
-  const counterData = useContext(CounterContext)
-
-  console.log(counterData)
-
   return (
     <Box
       component="form"
@@ -54,7 +49,6 @@ const DatosUsuario = ({ updateStep }) => {
         console.log(email, password);
       }}
     >
-      <strong>El valor del contador es: {counterData.count}</strong> {/*ESTO ES PARA FINES PRACTICOS DE PRUEBA*/}
       <TextField
         label="Correo electrónico"
         variant="outlined"
